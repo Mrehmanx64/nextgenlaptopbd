@@ -1,0 +1,2074 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>NextGen Laptop BD — Premium Laptop Shop</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: ["selector", '[data-theme="dark"]'],
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2596be",
+              "primary-dark": "#1b6f8f",
+              "primary-light": "#5ec2e7",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+              montserrat: ["Montserrat", "sans-serif"],
+              oswald: ["Oswald", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--  HEADER  -->
+    <header id="header">
+      <div class="max-w-screen-xl mx-auto flex items-center gap-4">
+        <!-- Logo -->
+        <a href="#" class="flex-shrink-0">
+          <img
+            src="https://github.com/Mrehmanx64/nextgenlaptopbd/blob/main/IMG-20260425-WA000100.jpg?raw=true"
+            alt="NextGen Laptop BD"
+            class="logo-img"
+            loading="eager"
+          />
+        </a>
+
+        <!-- Search (desktop) -->
+        <div class="search-bar flex-1 hidden md:flex">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            type="text"
+            placeholder="Search laptops, brands, accessories…"
+            id="search-input"
+          />
+          <button
+            onclick="doSearch()"
+            style="
+              color: var(--primary);
+              font-size: 12px;
+              font-weight: 600;
+              font-family: &quot;Poppins&quot;, sans-serif;
+              background: none;
+              border: none;
+              cursor: pointer;
+              white-space: nowrap;
+            "
+          >
+            Search
+          </button>
+        </div>
+
+        <!-- Nav links -->
+        <nav class="hidden lg:flex items-center gap-1">
+          <a href="#offers" class="nav-link"
+            >Offers <span class="offers-badge">HOT</span></a
+          >
+          <a href="#new-arrivals" class="nav-link">Pre-order</a>
+        </nav>
+
+        <!-- Right icons -->
+        <div class="flex items-center gap-2 ml-auto md:ml-0">
+          <!-- Mobile search -->
+          <button class="icon-btn md:hidden" onclick="toggleMobileSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <!-- Cart -->
+          <button class="icon-btn" onclick="toggleCart()" title="Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+          <!-- Profile -->
+          <button
+            class="icon-btn hidden sm:flex"
+            title="Login / Profile"
+            onclick="showToast('Login feature coming soon!', 'fa-user')"
+          >
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <!-- Theme toggle -->
+          <div
+            class="toggle-track"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+          >
+            <div class="toggle-thumb">
+              <i
+                class="fa-solid fa-sun"
+                id="theme-icon"
+                style="font-size: 9px"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile search bar -->
+      <div id="mobile-search" class="hidden md:hidden px-2 pt-3">
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search laptops…" />
+        </div>
+      </div>
+    </header>
+
+    <!--  HERO  -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="max-w-screen-xl mx-auto w-full relative z-10">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <!-- Text -->
+          <div class="hero-text">
+            <div
+              class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6"
+              style="border-color: rgba(37, 150, 190, 0.3)"
+            >
+              <span
+                style="
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background: var(--primary);
+                  display: inline-block;
+                  animation: glowPulse 2s infinite;
+                "
+              ></span>
+              <span
+                style="
+                  font-size: 12px;
+                  color: var(--primary);
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                  font-weight: 600;
+                  letter-spacing: 1px;
+                "
+                >সেরা ল্যাপটপ ডিল — Sirajganj Sadar</span
+              >
+            </div>
+            <h1
+              class="section-title leading-tight mb-4"
+              style="font-size: clamp(32px, 6vw, 64px); line-height: 1.1"
+            >
+              <span class="grad-text">NextGen</span><br />
+              Laptop BD
+            </h1>
+            <p
+              style="
+                font-size: clamp(15px, 2vw, 18px);
+                color: var(--text2);
+                font-family: &quot;Poppins&quot;, sans-serif;
+                line-height: 1.7;
+                max-width: 480px;
+                margin-bottom: 32px;
+              "
+            >
+              আজকের অফার — Bangladesh's premier destination for premium laptops.
+              MacBook, ROG, ThinkPad — all at the best price.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <button
+                class="btn-primary glow-pulse"
+                onclick="scrollTo('#products')"
+              >
+                <i class="fa-solid fa-bolt"></i> Shop Now
+              </button>
+              <button class="btn-outline" onclick="scrollTo('#new-arrivals')">
+                <i class="fa-solid fa-star"></i> New Arrivals
+              </button>
+            </div>
+            <!-- Stats -->
+            <div class="flex gap-6 mt-10 flex-wrap">
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Oswald&quot;, sans-serif;
+                    font-size: 28px;
+                    font-weight: 600;
+                    color: var(--primary);
+                  "
+                >
+                  500+
+                </div>
+                <div style="font-size: 12px; color: var(--text3)">Products</div>
+              </div>
+              <div style="width: 1px; background: var(--card-border)"></div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Oswald&quot;, sans-serif;
+                    font-size: 28px;
+                    font-weight: 600;
+                    color: var(--primary);
+                  "
+                >
+                  10K+
+                </div>
+                <div style="font-size: 12px; color: var(--text3)">
+                  Happy Customers
+                </div>
+              </div>
+              <div style="width: 1px; background: var(--card-border)"></div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Oswald&quot;, sans-serif;
+                    font-size: 28px;
+                    font-weight: 600;
+                    color: var(--primary);
+                  "
+                >
+                  36M
+                </div>
+                <div style="font-size: 12px; color: var(--text3)">
+                  EMI Available
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Laptop showcase -->
+          <div class="flex justify-center items-center relative">
+            <div
+              class="laptop-float"
+              style="filter: drop-shadow(0 32px 64px rgba(37, 150, 190, 0.35))"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&q=80"
+                alt="Premium Laptop"
+                loading="lazy"
+                style="width: 100%; max-width: 520px; border-radius: 20px"
+              />
+            </div>
+            <!-- Floating badge -->
+            <div
+              class="glass absolute top-4 right-4 px-4 py-3 rounded-2xl"
+              style="border-color: rgba(37, 150, 190, 0.3)"
+            >
+              <div
+                style="
+                  font-size: 10px;
+                  color: var(--text3);
+                  font-family: &quot;Poppins&quot;, sans-serif;
+                "
+              >
+                Starting from
+              </div>
+              <div
+                style="
+                  font-family: &quot;Oswald&quot;, sans-serif;
+                  font-size: 22px;
+                  color: var(--primary);
+                "
+              >
+                ৳ 45,000
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style="animation: floatLaptop 2s ease-in-out infinite"
+      >
+        <div
+          style="
+            font-size: 11px;
+            color: var(--text3);
+            font-family: &quot;Poppins&quot;, sans-serif;
+          "
+        >
+          Scroll
+        </div>
+        <i class="fa-solid fa-chevron-down" style="color: var(--primary)"></i>
+      </div>
+    </section>
+
+    <!--  BENTO GRID  -->
+    <section
+      id="bento"
+      class="py-16 px-4 md:px-8 max-w-screen-xl mx-auto reveal"
+    >
+      <div class="flex items-center justify-between mb-8 flex-wrap gap-4">
+        <div>
+          <h2 class="section-title grad-text">Featured Deals</h2>
+          <p class="section-sub">
+            আজকের সেরা অফার — Curated picks just for you
+          </p>
+        </div>
+        <button class="btn-outline" onclick="scrollTo('#products')">
+          <i class="fa-solid fa-grid-2"></i> View All
+        </button>
+      </div>
+      <div class="bento-grid">
+        <!-- Main carousel -->
+        <div
+          class="bento-c1 card overflow-hidden relative"
+          style="min-height: 340px; padding: 0"
+        >
+          <div
+            id="bento-carousel"
+            style="overflow: hidden; height: 100%; border-radius: 20px"
+          >
+            <div
+              class="carousel-track"
+              id="carousel-track"
+              style="height: 100%"
+            >
+              <div
+                class="carousel-slide"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #0f2027,
+                    #203a43,
+                    #2c5364
+                  );
+                  display: flex;
+                  align-items: center;
+                  gap: 24px;
+                  padding: 36px;
+                "
+              >
+                <div style="flex: 1">
+                  <span
+                    class="badge badge-hot"
+                    style="
+                      position: relative;
+                      top: auto;
+                      left: auto;
+                      margin-bottom: 12px;
+                      display: inline-block;
+                    "
+                    >🔥 HOT DEAL</span
+                  >
+                  <h3
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: clamp(20px, 3vw, 30px);
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Apple MacBook Pro M3
+                  </h3>
+                  <p
+                    style="
+                      color: var(--text2);
+                      font-size: 13px;
+                      margin-bottom: 16px;
+                    "
+                  >
+                    16" Liquid Retina XDR · 18GB RAM · 512GB SSD
+                  </p>
+                  <div
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: 28px;
+                      color: #5ec2e7;
+                      margin-bottom: 20px;
+                    "
+                  >
+                    ৳ 1,89,000
+                  </div>
+                  <button
+                    class="btn-primary"
+                    onclick="addToCart('MacBook Pro M3', 189000)"
+                  >
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1611186871525-854d9b4f16c4?w=400&q=80"
+                  style="
+                    width: 45%;
+                    max-width: 220px;
+                    object-fit: contain;
+                    border-radius: 12px;
+                    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+                  "
+                  loading="lazy"
+                />
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #1a0533,
+                    #2d1a4a,
+                    #3d2060
+                  );
+                  display: flex;
+                  align-items: center;
+                  gap: 24px;
+                  padding: 36px;
+                "
+              >
+                <div style="flex: 1">
+                  <span
+                    class="badge badge-new"
+                    style="
+                      position: relative;
+                      top: auto;
+                      left: auto;
+                      margin-bottom: 12px;
+                      display: inline-block;
+                    "
+                    >✨ NEW</span
+                  >
+                  <h3
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: clamp(20px, 3vw, 30px);
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    ASUS ROG Strix G16
+                  </h3>
+                  <p
+                    style="
+                      color: var(--text2);
+                      font-size: 13px;
+                      margin-bottom: 16px;
+                    "
+                  >
+                    Intel i9-14900HX · RTX 4080 · 32GB DDR5
+                  </p>
+                  <div
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: 28px;
+                      color: #a78bfa;
+                      margin-bottom: 20px;
+                    "
+                  >
+                    ৳ 2,45,000
+                  </div>
+                  <button
+                    class="btn-primary"
+                    style="
+                      background: linear-gradient(135deg, #7c3aed, #a855f7);
+                    "
+                    onclick="addToCart('ASUS ROG Strix G16', 245000)"
+                  >
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80"
+                  style="
+                    width: 45%;
+                    max-width: 220px;
+                    object-fit: contain;
+                    border-radius: 12px;
+                    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+                  "
+                  loading="lazy"
+                />
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #0d2818,
+                    #1a4731,
+                    #2d6e45
+                  );
+                  display: flex;
+                  align-items: center;
+                  gap: 24px;
+                  padding: 36px;
+                "
+              >
+                <div style="flex: 1">
+                  <span
+                    class="badge badge-sale"
+                    style="
+                      position: relative;
+                      top: auto;
+                      left: auto;
+                      margin-bottom: 12px;
+                      display: inline-block;
+                    "
+                    >💰 SALE</span
+                  >
+                  <h3
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: clamp(20px, 3vw, 30px);
+                      font-weight: 700;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Lenovo ThinkPad X1 Carbon
+                  </h3>
+                  <p
+                    style="
+                      color: var(--text2);
+                      font-size: 13px;
+                      margin-bottom: 16px;
+                    "
+                  >
+                    Intel i7-1365U · 16GB · 1TB SSD · Ultra-light
+                  </p>
+                  <div
+                    style="
+                      font-family: &quot;Oswald&quot;, sans-serif;
+                      font-size: 28px;
+                      color: #34d399;
+                      margin-bottom: 20px;
+                    "
+                  >
+                    ৳ 1,45,000
+                  </div>
+                  <button
+                    class="btn-primary"
+                    style="
+                      background: linear-gradient(135deg, #059669, #10b981);
+                    "
+                    onclick="addToCart('ThinkPad X1 Carbon', 145000)"
+                  >
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
+                <img
+                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80"
+                  style="
+                    width: 45%;
+                    max-width: 220px;
+                    object-fit: contain;
+                    border-radius: 12px;
+                    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.4));
+                  "
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Carousel dots -->
+          <div
+            style="
+              position: absolute;
+              bottom: 16px;
+              left: 50%;
+              transform: translateX(-50%);
+              display: flex;
+              gap: 6px;
+            "
+            id="carousel-dots"
+          ></div>
+        </div>
+
+        <!-- Deal card -->
+        <div
+          class="bento-c2 card p-5 flex flex-col justify-between"
+          style="
+            background: linear-gradient(
+              135deg,
+              rgba(37, 150, 190, 0.12),
+              rgba(37, 150, 190, 0.04)
+            );
+            min-height: 160px;
+          "
+        >
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                class="fa-solid fa-fire"
+                style="color: #ff6b35; font-size: 18px"
+              ></i>
+              <span
+                style="
+                  font-family: &quot;Oswald&quot;, sans-serif;
+                  font-size: 14px;
+                  color: #ff6b35;
+                  font-weight: 600;
+                "
+                >FLASH SALE ENDS IN</span
+              >
+            </div>
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 16px;
+              "
+            >
+              HP EliteBook 840 G10
+            </h4>
+            <!-- Countdown -->
+            <div class="flex gap-2 mb-4">
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-h">08</div>
+                <div class="countdown-label">Hrs</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-m">45</div>
+                <div class="countdown-label">Min</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-num" id="cd-s">30</div>
+                <div class="countdown-label">Sec</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-end justify-between">
+            <div>
+              <div
+                style="
+                  font-size: 12px;
+                  color: var(--text3);
+                  text-decoration: line-through;
+                "
+              >
+                ৳ 1,20,000
+              </div>
+              <div class="price">৳ 95,000</div>
+            </div>
+            <button
+              class="btn-primary"
+              style="padding: 8px 16px; font-size: 12px"
+              onclick="addToCart('HP EliteBook 840', 95000)"
+            >
+              <i class="fa-solid fa-cart-plus"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <!-- Category card -->
+        <div class="bento-c3 card p-5">
+          <h4
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 16px;
+              font-weight: 600;
+              margin-bottom: 14px;
+              text-transform: uppercase;
+            "
+          >
+            Browse Categories
+          </h4>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('Gaming Laptops', 'fa-gamepad')"
+            >
+              <i class="fa-solid fa-gamepad"></i> Gaming
+            </button>
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('Business Laptops', 'fa-briefcase')"
+            >
+              <i class="fa-solid fa-briefcase"></i> Business
+            </button>
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('Ultrabooks', 'fa-feather')"
+            >
+              <i class="fa-solid fa-feather"></i> Ultrabook
+            </button>
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('Workstations', 'fa-server')"
+            >
+              <i class="fa-solid fa-server"></i> Workstation
+            </button>
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('2-in-1 Laptops', 'fa-rotate')"
+            >
+              <i class="fa-solid fa-rotate"></i> 2-in-1
+            </button>
+            <button
+              class="btn-outline"
+              style="
+                padding: 8px 12px;
+                font-size: 11px;
+                justify-content: center;
+              "
+              onclick="showToast('Budget Laptops', 'fa-tags')"
+            >
+              <i class="fa-solid fa-tags"></i> Budget
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured mini cards -->
+        <div
+          class="bento-c4 card p-4"
+          style="display: flex; flex-direction: column; gap: 12px"
+        >
+          <div
+            style="
+              background: var(--bg3);
+              border-radius: 12px;
+              padding: 12px;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1588702547923-7408b552c4b7?w=120&q=80"
+              style="
+                width: 56px;
+                height: 56px;
+                object-fit: cover;
+                border-radius: 8px;
+              "
+              loading="lazy"
+            />
+            <div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-weight: 600;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                "
+              >
+                Dell XPS 15
+              </div>
+              <div class="price" style="font-size: 15px">৳ 1,55,000</div>
+            </div>
+          </div>
+          <div
+            style="
+              background: var(--bg3);
+              border-radius: 12px;
+              padding: 12px;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=120&q=80"
+              style="
+                width: 56px;
+                height: 56px;
+                object-fit: cover;
+                border-radius: 8px;
+              "
+              loading="lazy"
+            />
+            <div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-weight: 600;
+                  font-family: &quot;Montserrat&quot;, sans-serif;
+                "
+              >
+                Acer Nitro 16
+              </div>
+              <div class="price" style="font-size: 15px">৳ 89,000</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bento-c5 card p-4 flex flex-col items-center justify-center text-center gap-3"
+          style="
+            background: linear-gradient(
+              135deg,
+              rgba(37, 150, 190, 0.15),
+              rgba(94, 194, 231, 0.05)
+            );
+          "
+        >
+          <i
+            class="fa-solid fa-tag"
+            style="font-size: 32px; color: var(--primary)"
+          ></i>
+          <div
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 18px;
+              font-weight: 600;
+            "
+          >
+            36 Month EMI
+          </div>
+          <div style="font-size: 12px; color: var(--text2)">
+            0% interest available on selected banks
+          </div>
+          <button
+            class="btn-primary"
+            style="padding: 8px 16px; font-size: 12px"
+            onclick="showToast('EMI options available!', 'fa-credit-card')"
+          >
+            Learn More
+          </button>
+        </div>
+
+        <div
+          class="bento-c6 card p-4 flex flex-col items-center justify-center text-center gap-3"
+          style="
+            background: linear-gradient(
+              135deg,
+              rgba(255, 77, 77, 0.1),
+              rgba(255, 140, 0, 0.05)
+            );
+          "
+        >
+          <i
+            class="fa-solid fa-truck-fast"
+            style="font-size: 32px; color: #ff6b35"
+          ></i>
+          <div
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 18px;
+              font-weight: 600;
+            "
+          >
+            Fast Delivery
+          </div>
+          <div style="font-size: 12px; color: var(--text2)">
+            Same-day delivery in Sirajganj Sadar
+          </div>
+          <div style="font-size: 11px; color: #ff6b35; font-weight: 600">
+            <i class="fa-solid fa-circle-check"></i> Free above ৳ 50,000
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  FEATURES  -->
+    <section id="features" class="py-16 px-4 md:px-8 max-w-screen-xl mx-auto">
+      <div class="text-center mb-10 reveal">
+        <h2 class="section-title grad-text">Why Choose Us</h2>
+        <p class="section-sub">
+          আমাদের বেছে নেওয়ার কারণ — Premium service guaranteed
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            36 Months EMI
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Easy installments on all major bank cards
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            Fastest Delivery
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Same-day delivery across Bangladesh
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-building"></i></div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            Corporate Deals
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Special bulk pricing for businesses
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-badge-check"></i>
+          </div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            Best Price Deals
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Price match guarantee on all products
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            After Sale Service
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Dedicated support & warranty service
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-store"></i></div>
+          <h4
+            style="
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              font-weight: 700;
+              font-size: 14px;
+              margin-bottom: 6px;
+            "
+          >
+            Physical Store
+          </h4>
+          <p style="font-size: 12px; color: var(--text3)">
+            Visit us at Sirajganj Sadar, Bangladesh
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--  TOP BRANDS  -->
+    <section id="brands" class="py-16 px-4 md:px-8 max-w-screen-xl mx-auto">
+      <div class="text-center mb-10 reveal">
+        <h2 class="section-title grad-text">Top Brands</h2>
+        <p class="section-sub">
+          শীর্ষ ব্র্যান্ড — Authorized dealer for all major brands
+        </p>
+      </div>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-4 reveal">
+        <div
+          class="brand-card"
+          onclick="showToast('Apple products available!', 'fa-apple')"
+        >
+          <div class="brand-icon" style="color: #a8b8c8">
+            <i class="fa-brands fa-apple"></i>
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >Apple</span
+          >
+          <span style="font-size: 10px; color: var(--text3)"
+            >MacBook, iPad</span
+          >
+        </div>
+        <div
+          class="brand-card"
+          onclick="showToast('Dell products available!', 'fa-laptop')"
+        >
+          <div
+            class="brand-icon"
+            style="
+              color: #007db8;
+              font-size: 30px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            D
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >Dell</span
+          >
+          <span style="font-size: 10px; color: var(--text3)"
+            >XPS, Alienware</span
+          >
+        </div>
+        <div
+          class="brand-card"
+          onclick="showToast('HP products available!', 'fa-laptop')"
+        >
+          <div
+            class="brand-icon"
+            style="
+              color: #0096d6;
+              font-size: 30px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            HP
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >HP</span
+          >
+          <span style="font-size: 10px; color: var(--text3)"
+            >EliteBook, Spectre</span
+          >
+        </div>
+        <div
+          class="brand-card"
+          onclick="showToast('Lenovo products available!', 'fa-laptop')"
+        >
+          <div
+            class="brand-icon"
+            style="
+              color: #e2231a;
+              font-size: 30px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            Le
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >Lenovo</span
+          >
+          <span style="font-size: 10px; color: var(--text3)"
+            >ThinkPad, IdeaPad</span
+          >
+        </div>
+        <div
+          class="brand-card"
+          onclick="showToast('Asus products available!', 'fa-laptop')"
+        >
+          <div
+            class="brand-icon"
+            style="
+              color: #00adef;
+              font-size: 30px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            As
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >Asus</span
+          >
+          <span style="font-size: 10px; color: var(--text3)">ROG, ZenBook</span>
+        </div>
+        <div
+          class="brand-card"
+          onclick="showToast('Acer products available!', 'fa-laptop')"
+        >
+          <div
+            class="brand-icon"
+            style="
+              color: #83b81a;
+              font-size: 30px;
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            Ac
+          </div>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 14px;
+              font-weight: 500;
+            "
+            >Acer</span
+          >
+          <span style="font-size: 10px; color: var(--text3)"
+            >Predator, Swift</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!--  BRAND MARQUEE  -->
+    <section
+      class="py-10 overflow-hidden"
+      style="
+        border-top: 1px solid var(--card-border);
+        border-bottom: 1px solid var(--card-border);
+        background: var(--bg2);
+      "
+    >
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <!-- Items duplicated for seamless loop -->
+          <div class="marquee-item">
+            <i class="fa-brands fa-apple"></i> Apple
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-laptop"></i> Dell
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-computer"></i> HP
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-microchip"></i> Lenovo
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-gamepad"></i> ASUS ROG
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-bolt"></i> Acer Predator
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-shield-halved"></i> MSI
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-star"></i> Samsung
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-brands fa-apple"></i> Apple
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-laptop"></i> Dell
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-computer"></i> HP
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-microchip"></i> Lenovo
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-gamepad"></i> ASUS ROG
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-bolt"></i> Acer Predator
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-shield-halved"></i> MSI
+            <div class="marquee-dot"></div>
+          </div>
+          <div class="marquee-item">
+            <i class="fa-solid fa-star"></i> Samsung
+            <div class="marquee-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  NEW ARRIVALS  -->
+    <section
+      id="new-arrivals"
+      class="py-16 px-4 md:px-8 max-w-screen-xl mx-auto"
+    >
+      <div
+        class="flex items-center justify-between mb-10 flex-wrap gap-4 reveal"
+      >
+        <div>
+          <h2 class="section-title grad-text">New Arrivals</h2>
+          <p class="section-sub">
+            নতুন ল্যাপটপ — Fresh off the shelf, premium picks
+          </p>
+        </div>
+        <button
+          class="btn-outline"
+          onclick="showToast('Viewing all new arrivals', 'fa-sparkles')"
+        >
+          <i class="fa-solid fa-sparkles"></i> See All
+        </button>
+      </div>
+      <div class="arrivals-grid reveal">
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1611186871525-854d9b4f16c4?w=300&q=80"
+              alt="MacBook Air M3"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              MacBook Air M3
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              13.6" Liquid Retina · 8GB · 256GB
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 1,25,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('MacBook Air M3', 125000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=300&q=80"
+              alt="ASUS ROG Zephyrus"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              ASUS ROG Zephyrus G14
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              AMD Ryzen 9 · RX 7900S · 16GB
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 1,95,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('ROG Zephyrus G14', 195000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&q=80"
+              alt="Dell XPS 16"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              Dell XPS 16 (2024)
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              Intel i9 · RTX 4070 · 32GB DDR5
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 2,15,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('Dell XPS 16', 215000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1588702547923-7408b552c4b7?w=300&q=80"
+              alt="HP Spectre x360"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              HP Spectre x360 14
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              Intel i7 Ultra · 16GB · 1TB · OLED
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 1,55,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('HP Spectre x360', 155000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300&q=80"
+              alt="Lenovo Legion 7"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              Lenovo Legion 7i Gen 9
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              Intel i9 · RTX 4080 · 32GB · 2TB
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 2,65,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('Lenovo Legion 7i', 265000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="arrival-card">
+          <div class="img-area">
+            <span class="badge badge-new">NEW</span
+            ><img
+              src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&q=80"
+              alt="Acer Swift Edge"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-4">
+            <h4
+              style="
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 4px;
+              "
+            >
+              Acer Swift Edge 16
+            </h4>
+            <p
+              style="font-size: 11px; color: var(--text3); margin-bottom: 10px"
+            >
+              AMD Ryzen AI · 32GB · 4K OLED
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="price">৳ 1,10,000</div>
+              <button
+                class="btn-primary"
+                style="padding: 6px 14px; font-size: 11px"
+                onclick="addToCart('Acer Swift Edge', 110000)"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  TOP SELLING  -->
+    <section id="products" class="py-16 px-4 md:px-8 max-w-screen-xl mx-auto">
+      <div
+        class="flex items-center justify-between mb-10 flex-wrap gap-4 reveal"
+      >
+        <div>
+          <h2 class="section-title grad-text">Top Selling</h2>
+          <p class="section-sub">
+            সবচেয়ে বেশি বিক্রি — Our bestsellers this month
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button
+            class="btn-primary"
+            style="padding: 8px 16px; font-size: 12px"
+            onclick="showToast('Filter applied!', 'fa-filter')"
+          >
+            <i class="fa-solid fa-filter"></i> Filter
+          </button>
+          <button
+            class="btn-outline"
+            style="padding: 8px 16px; font-size: 12px"
+            onclick="
+              showToast('Sorting by popular', 'fa-arrow-down-wide-short')
+            "
+          >
+            <i class="fa-solid fa-arrow-down-wide-short"></i> Sort
+          </button>
+        </div>
+      </div>
+      <div class="products-grid reveal" id="products-grid">
+        <!-- Products injected by JS -->
+      </div>
+    </section>
+
+    <!--  SHOP NOW BANNER  -->
+    <section
+      id="offers"
+      class="py-20 px-4 md:px-8 mx-4 md:mx-8 rounded-3xl cta-banner my-8 reveal max-w-screen-xl md:mx-auto"
+    >
+      <div class="relative z-10 text-center max-w-3xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full"
+          style="
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+          "
+        >
+          <i class="fa-solid fa-tag" style="color: #fff"></i>
+          <span
+            style="
+              font-size: 12px;
+              font-weight: 700;
+              color: #fff;
+              font-family: &quot;Montserrat&quot;, sans-serif;
+              letter-spacing: 1px;
+            "
+            >LIMITED TIME OFFER</span
+          >
+        </div>
+        <h2
+          style="
+            font-family: &quot;Oswald&quot;, sans-serif;
+            font-size: clamp(28px, 6vw, 64px);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+          "
+        >
+          Flat 15% OFF<br />on All Gaming Laptops
+        </h2>
+        <p
+          style="
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: &quot;Poppins&quot;, sans-serif;
+            margin-bottom: 32px;
+          "
+        >
+          গেমিং ল্যাপটপে বিশেষ ছাড় — Use code <strong>NEXTGEN15</strong> at
+          checkout
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <button
+            class="btn-primary"
+            style="
+              background: rgba(255, 255, 255, 0.2);
+              backdrop-filter: blur(10px);
+              border: 2px solid rgba(255, 255, 255, 0.4);
+              font-size: 16px;
+              padding: 16px 36px;
+            "
+            onclick="addToCart('Gaming Bundle Deal', 150000)"
+          >
+            <i class="fa-solid fa-bolt"></i> Shop Gaming Laptops
+          </button>
+          <button
+            class="btn-outline"
+            style="
+              border-color: rgba(255, 255, 255, 0.5);
+              color: #fff;
+              font-size: 16px;
+              padding: 16px 36px;
+            "
+            onclick="showToast('Code NEXTGEN15 copied!', 'fa-copy')"
+          >
+            <i class="fa-solid fa-copy"></i> Copy Code
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!--  FOOTER  -->
+    <footer class="py-16 px-4 md:px-8">
+      <div class="max-w-screen-xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12"
+        >
+          <!-- Brand -->
+          <div>
+            <img
+              src="https://github.com/Mrehmanx64/nextgenlaptopbd/blob/main/IMG-20260425-WA000100.jpg?raw=true"
+              alt="NextGen Laptop BD"
+              class="logo-img mb-4"
+              loading="lazy"
+            />
+            <p
+              style="
+                font-size: 13px;
+                color: var(--text3);
+                line-height: 1.8;
+                margin-bottom: 16px;
+              "
+            >
+              Premium laptop shop located in Sirajganj Sadar, Bangladesh. Your
+              trusted partner for genuine laptops, accessories, and after-sales
+              service.
+            </p>
+            <div class="flex gap-2">
+              <div
+                class="social-icon"
+                onclick="window.open('https://facebook.com', '_blank')"
+                title="Facebook"
+              >
+                <i class="fa-brands fa-facebook-f"></i>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://instagram.com', '_blank')"
+                title="Instagram"
+              >
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://youtube.com', '_blank')"
+                title="YouTube"
+              >
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+              <div
+                class="social-icon"
+                onclick="window.open('https://wa.me/', '_blank')"
+                title="WhatsApp"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4
+              style="
+                font-family: &quot;Oswald&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 16px;
+              "
+            >
+              Quick Links
+            </h4>
+            <a href="#" class="footer-link">🏠 Home</a>
+            <a href="#products" class="footer-link">💻 All Laptops</a>
+            <a href="#new-arrivals" class="footer-link">✨ New Arrivals</a>
+            <a href="#offers" class="footer-link">🔥 Offers & Deals</a>
+            <a href="#brands" class="footer-link">🏷️ Top Brands</a>
+            <a href="#" class="footer-link">📦 Pre-order</a>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h4
+              style="
+                font-family: &quot;Oswald&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 16px;
+              "
+            >
+              Support
+            </h4>
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-truck"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              Track Order</a
+            >
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-rotate-left"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              Return Policy</a
+            >
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-shield-halved"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              Warranty Service</a
+            >
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-circle-question"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              FAQs</a
+            >
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-headset"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              Live Support</a
+            >
+            <a href="#" class="footer-link"
+              ><i
+                class="fa-solid fa-file-contract"
+                style="width: 16px; color: var(--primary)"
+              ></i>
+              Privacy Policy</a
+            >
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4
+              style="
+                font-family: &quot;Oswald&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin-bottom: 16px;
+              "
+            >
+              Contact Us
+            </h4>
+            <div class="flex items-start gap-3 mb-3">
+              <i
+                class="fa-solid fa-location-dot"
+                style="color: var(--primary); margin-top: 3px; flex-shrink: 0"
+              ></i>
+              <span style="font-size: 13px; color: var(--text3)"
+                >Sirajganj Sadar, Sirajganj, Bangladesh</span
+              >
+            </div>
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-phone" style="color: var(--primary)"></i>
+              <a
+                href="tel:+8801234567890"
+                style="
+                  font-size: 13px;
+                  color: var(--text3);
+                  text-decoration: none;
+                "
+                onmouseover="this.style.color = 'var(--primary)'"
+                onmouseout="this.style.color = 'var(--text3)'"
+                >+880 12345 67890</a
+              >
+            </div>
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366"></i>
+              <a
+                href="https://wa.me/8801234567890"
+                style="
+                  font-size: 13px;
+                  color: var(--text3);
+                  text-decoration: none;
+                "
+                onmouseover="this.style.color = 'var(--primary)'"
+                onmouseout="this.style.color = 'var(--text3)'"
+                >WhatsApp Support</a
+              >
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope" style="color: var(--primary)"></i>
+              <a
+                href="mailto:info@nextgenlaptopbd.com"
+                style="
+                  font-size: 13px;
+                  color: var(--text3);
+                  text-decoration: none;
+                "
+                onmouseover="this.style.color = 'var(--primary)'"
+                onmouseout="this.style.color = 'var(--text3)'"
+                >info@nextgenlaptopbd.com</a
+              >
+            </div>
+            <!-- Map link -->
+            <div class="mt-4">
+              <a
+                href="https://maps.google.com"
+                target="_blank"
+                class="btn-outline"
+                style="font-size: 11px; padding: 8px 14px; display: inline-flex"
+              >
+                <i class="fa-solid fa-map-location-dot"></i> View on Map
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div
+          style="
+            border-top: 1px solid var(--card-border);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+          "
+        >
+          <p style="font-size: 12px; color: var(--text3)">
+            © 2026 NextGen Laptop BD. All rights reserved. Sirajganj Sadar,
+            Bangladesh.
+          </p>
+          <div class="flex items-center gap-3 flex-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/60px-Mastercard_2019_logo.svg.png"
+              style="height: 22px; opacity: 0.6; filter: grayscale(1)"
+              loading="lazy"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/60px-Visa_Inc._logo.svg.png"
+              style="height: 16px; opacity: 0.6; filter: grayscale(1)"
+              loading="lazy"
+            />
+            <div
+              style="
+                background: var(--card);
+                border: 1px solid var(--card-border);
+                border-radius: 6px;
+                padding: 3px 8px;
+                font-size: 10px;
+                color: var(--text3);
+                font-weight: 600;
+              "
+            >
+              bKash
+            </div>
+            <div
+              style="
+                background: var(--card);
+                border: 1px solid var(--card-border);
+                border-radius: 6px;
+                padding: 3px 8px;
+                font-size: 10px;
+                color: var(--text3);
+                font-weight: 600;
+              "
+            >
+              Nagad
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!--  POWERED BY  -->
+    <div id="powered-by">
+      <span
+        style="
+          font-size: 13px;
+          color: var(--text3);
+          font-family: &quot;Poppins&quot;, sans-serif;
+        "
+        >Powered by</span
+      >
+      <span
+        style="
+          font-family: &quot;Oswald&quot;, sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--primary);
+        "
+        >Munna Rehman</span
+      >
+      <div class="flex items-center gap-2">
+        <a
+          href="https://facebook.com/Themunnarehman"
+          target="_blank"
+          class="social-icon"
+          title="Facebook"
+          style="width: 30px; height: 30px; border-radius: 8px; font-size: 13px"
+          ><i class="fa-brands fa-facebook-f"></i
+        ></a>
+        <a
+          href="https://instagram.com/Themunnarehman"
+          target="_blank"
+          class="social-icon"
+          title="Instagram"
+          style="width: 30px; height: 30px; border-radius: 8px; font-size: 13px"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a
+          href="https://github.com/Mrehmanx64"
+          target="_blank"
+          class="social-icon"
+          title="GitHub"
+          style="width: 30px; height: 30px; border-radius: 8px; font-size: 13px"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </div>
+    </div>
+
+    <!--  MINI CART  -->
+    <div id="cart-overlay" onclick="toggleCart()"></div>
+    <div id="mini-cart">
+      <div
+        style="
+          padding: 20px;
+          border-bottom: 1px solid var(--card-border);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <h3
+          style="
+            font-family: &quot;Oswald&quot;, sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+          "
+        >
+          <i
+            class="fa-solid fa-cart-shopping"
+            style="color: var(--primary); margin-right: 8px"
+          ></i
+          >Your Cart
+        </h3>
+        <button
+          onclick="toggleCart()"
+          style="
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text2);
+            font-size: 18px;
+            transition: color 0.25s;
+          "
+          onmouseover="this.style.color = 'var(--primary)'"
+          onmouseout="this.style.color = 'var(--text2)'"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div
+        id="cart-items"
+        style="
+          flex: 1;
+          overflow-y: auto;
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        "
+      >
+        <div
+          style="text-align: center; padding: 40px 20px; color: var(--text3)"
+        >
+          <i
+            class="fa-solid fa-cart-shopping"
+            style="
+              font-size: 48px;
+              opacity: 0.3;
+              margin-bottom: 12px;
+              display: block;
+            "
+          ></i>
+          <p style="font-size: 14px">Your cart is empty</p>
+          <p style="font-size: 12px; margin-top: 4px">
+            Add some laptops to get started!
+          </p>
+        </div>
+      </div>
+      <div style="padding: 16px; border-top: 1px solid var(--card-border)">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          "
+        >
+          <span style="color: var(--text2); font-size: 14px">Total</span>
+          <span
+            style="
+              font-family: &quot;Oswald&quot;, sans-serif;
+              font-size: 20px;
+              color: var(--primary);
+            "
+            id="cart-total"
+            >৳ 0</span
+          >
+        </div>
+        <button
+          class="btn-primary"
+          style="
+            width: 100%;
+            justify-content: center;
+            font-size: 14px;
+            padding: 14px;
+          "
+          onclick="showToast('Checkout coming soon!', 'fa-lock')"
+        >
+          <i class="fa-solid fa-lock"></i> Checkout Securely
+        </button>
+        <button
+          class="btn-outline"
+          style="
+            width: 100%;
+            justify-content: center;
+            font-size: 13px;
+            padding: 11px;
+            margin-top: 8px;
+          "
+          onclick="clearCart()"
+        >
+          <i class="fa-solid fa-trash"></i> Clear Cart
+        </button>
+      </div>
+    </div>
+
+    <!--  TOAST CONTAINER  -->
+    <div id="toast-container"></div>
+
+    <!--  BOTTOM NAV (Mobile)  -->
+    <nav id="bottom-nav">
+      <div class="bottom-nav-item active" onclick="scrollTo('#hero')">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+      <div class="bottom-nav-item" onclick="scrollTo('#products')">
+        <i class="fa-solid fa-laptop"></i>
+        <span>Shop</span>
+      </div>
+      <div class="bottom-nav-item" onclick="toggleCart()">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Cart</span>
+      </div>
+      <div
+        class="bottom-nav-item"
+        onclick="showToast('Login coming soon!', 'fa-user')"
+      >
+        <i class="fa-regular fa-user"></i>
+        <span>Profile</span>
+      </div>
+    </nav>
+
+    <script src="app.js"></script>
+  </body>
+</html>
